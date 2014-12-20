@@ -1,4 +1,5 @@
 # coding: utf-8
+import time
 import re
 import urllib
 import urllib2
@@ -6,6 +7,7 @@ from bs4 import BeautifulSoup
 import sys
 
 __author__ = 'Muneyuki Kitano'
+
 
 class Crawler4U:
     """
@@ -24,7 +26,7 @@ class Crawler4U:
         page = 0
         while True:
             url = base_url + "?name=" + urllib.quote(word.decode("shift-jis").encode("utf-8")) + "&lim=" + str(page)
-            print url
+            print "crawling url : " + url
             f = urllib2.urlopen(url)
 
             res = BeautifulSoup(f.read())
@@ -35,6 +37,7 @@ class Crawler4U:
             for link in res.find_all(href=re.compile("image/")):
                 detail_url = "http://4u-beautyimg.com/" + link.get("href")
                 self._find_image(detail_url)
+                time.sleep(1)
             page += 13
 
     def _find_image(self, detail_url):
@@ -50,6 +53,7 @@ class Crawler4U:
 
         for img in soup.find_all("img"):
             if img.get("alt") == word.decode("shift-jis"):
+                print "extract image url : " + img.get("src")
                 file.write(img.get("src"))
                 file.write(",")
 
