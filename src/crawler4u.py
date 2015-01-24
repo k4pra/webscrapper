@@ -66,9 +66,8 @@ class Crawler4U:
             file.write("\n")
         file.close()
 
-# Execute
-word = sys.argv[1]  # example: "吉木りさ"
-path = sys.argv[2]  # example: "c:\\4uBeauty\\list.csv"
-
-crawler = Crawler4U(word, path)
-crawler.crawl()
+if __name__ == '__main__':
+    word = sys.argv[1]  # example: "吉木りさ"
+    path = sys.argv[2]  # example: "c:\\4uBeauty\\list.csv"
+    crawler = Crawler4U(word, path)
+    crawler.crawl()
