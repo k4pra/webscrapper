@@ -6,8 +6,6 @@ import urllib2
 from bs4 import BeautifulSoup
 import sys
 
-__author__ = 'Muneyuki Kitano'
-
 
 class Crawler4U:
     """

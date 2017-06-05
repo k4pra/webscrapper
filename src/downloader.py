@@ -4,8 +4,6 @@ import os
 import urllib2
 import sys
 
-__author__ = 'Muneyuki Kitano'
-
 class CsvDownLoader:
 
     def __init__(self, list, path):
